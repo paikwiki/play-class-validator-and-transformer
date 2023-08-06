@@ -6,13 +6,14 @@ export class Validatable {
     const errors = validateSync(this);
     if (errors.length === 0) return;
 
-    const errorMessage = this.generateErrorMessage(errors);
-    throw new Error(`[${this.constructor.name}] ${errorMessage}`);
+    throw new Error(this.generateErrorMessage(errors));
   }
 
   private generateErrorMessage(errors: ValidationError[]) {
-    return errors
-      .map(({ constraints }) => JSON.stringify(constraints))
+    const details = errors
+      .map(({ constraints }) => `  - ${JSON.stringify(constraints)}`)
       .join("\n");
+
+    return `[${this.constructor.name}] ${errors.length} error(s)\n${details}`;
   }
 }
