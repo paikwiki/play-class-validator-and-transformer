@@ -21,6 +21,12 @@
   "rules": {
     "@typescript-eslint/consistent-type-imports": "error",
     "@typescript-eslint/no-non-null-assertion": "error",
+    "prettier/prettier": [
+      "error",
+      {
+        "quoteProps": "consistent"
+      }
+    ],
     "import/order": [
       "error",
       {
