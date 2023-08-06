@@ -1,0 +1,25 @@
+{
+  "name": "play-class-validator-and-transformer",
+  "version": "0.0.1",
+  "description": "",
+  "main": "src/index.ts",
+  "author": "paikwiki",
+  "license": "MIT",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "lint": "eslint src"
+  },
+  "devDependencies": {
+    "@eslint/create-config": "^0.4.6",
+    "@types/node": "^20.4.8",
+    "@typescript-eslint/eslint-plugin": "^6.2.1",
+    "@typescript-eslint/parser": "^6.2.1",
+    "eslint": "^8.46.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-import": "^2.28.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "prettier": "^3.0.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.6"
+  }
+}
