@@ -16,7 +16,7 @@ export class Cat extends Validatable {
   comeFrom: City;
 
   @IsString()
-  @Length(20)
+  @Length(20, 20)
   id: string;
 
   @IsNumber()
