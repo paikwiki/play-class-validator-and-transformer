@@ -1,28 +1,27 @@
-import { CatDTO } from "./cat/cat.dto";
-import { Cat } from "./cat/cat.model";
 import { CITY } from "./constants";
+import { catService } from "./cat/cat.service";
+import type { CatDTO } from "./cat/cat.dto";
+
+const externalFakeAPI = () =>
+  ({
+    name: "Goni",
+    age: 13,
+    comeFrom: CITY.London,
+  }) as unknown;
+const parseCatDTOFake = (data: unknown) => data as CatDTO;
 
 const run = () => {
-  // 🟢 Valid
-  const catDTO1 = new CatDTO("Goni", 13, CITY.London);
-  console.log(catDTO1);
+  // incomming
+  const unknownData = externalFakeAPI();
+  const catDTO = parseCatDTOFake(unknownData);
 
-  const cat1 = new Cat("Goni", 13, CITY.London, "abcdefghijabcdefghij", 0, 0);
-  console.log(cat1);
+  // domain
+  const cat = catService.convertToCat(catDTO);
+  console.log(cat.sayHello());
 
-  // ❌ Invalid
-  const catDTO2 = new CatDTO("Goni", -1, CITY.London);
-  console.log(catDTO2);
-
-  const cat2 = new Cat(
-    "Goni",
-    -1,
-    CITY.London,
-    "abcdefghijabcdefghijabcde",
-    0,
-    0,
-  );
-  console.log(cat2);
+  // outgoing
+  const persistantCatDTO = catService.convertToPersistantCatDTO(cat);
+  console.log("Cat in database", persistantCatDTO);
 };
 
 run();

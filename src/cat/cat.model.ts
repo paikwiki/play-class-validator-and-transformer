@@ -25,22 +25,7 @@ export class Cat extends Validatable {
   @IsNumber()
   updatedAt: number;
 
-  constructor(
-    name: string,
-    age: number,
-    comeFrom: City,
-    id: string,
-    createdAt: number,
-    updatedAt: number,
-  ) {
-    super();
-
-    this.name = name;
-    this.age = age;
-    this.comeFrom = comeFrom;
-    this.id = id;
-    this.createdAt = createdAt;
-    this.updatedAt = updatedAt;
-    this.validate();
+  sayHello() {
+    return `Hi, my name is ${this.name}. I'm ${this.age} years old and come from ${this.comeFrom}!`;
   }
 }
